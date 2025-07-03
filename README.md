@@ -1,4 +1,3 @@
-# C-Cheat-Sheet
 # Introduction
 C is a low level programming langugae that is created by Denis Ritchie
 
@@ -618,4 +617,265 @@ bool isFishTasty = false;
 // Return boolean values
 printf("%d", isProgrammingFun);   // Returns 1 (true)
 printf("%d", isFishTasty);        // Returns 0 (false)
+```
+
+
+# Conditionals
+## If Statement
+If statement works only the condition is true
+
+### Syntax
+```c
+if (condition){
+    work
+}
+```
+
+### Example
+```c
+if (5 > 4){
+    printf("5 is greater than 4");
+}
+```
+
+## If-else Statement
+First check the **if condition**, if it meets, then execute codes under **if statement**, otherwise execute **else statement**
+
+### Syntax
+```c
+if (condition) {
+    work1
+}
+else {
+    work2
+}
+```
+
+### Example
+```c
+if (5 > 6) {
+    printf("True");
+}
+else {
+    printf("False");
+}
+```
+
+## If else-if else Statement
+There will be one **if**, and a lot of **else if** or single **else if** and lastly one optional **else** statement. It will check all statement one by one. When it will find one condition met, then it will only execute the block and will skip other conditions
+
+### Syntax
+```c
+if (condition1) {
+    work1
+}
+else if (condition2) {
+    work2
+}
+else if (condition3) {
+    work3
+}
+...
+...
+...
+else if (conditionN) {
+    workN
+}
+else {
+    workLast
+}
+```
+
+### Example
+```c
+int score = 87;
+
+if (score >= 90 && score <= 100) {
+    printf("Grade: A\n");
+} 
+else if (score >= 80 && score < 90) {
+    printf("Grade: B\n");
+} 
+else if (score >= 70 && score < 80) {
+    printf("Grade: C\n");
+} 
+else if (score >= 60 && score < 70) {
+    printf("Grade: D\n");
+} 
+else if (score >= 0 && score < 60) {
+    printf("Grade: F\n");
+} 
+else {
+    printf("Invalid score! Please enter a number between 0 and 100.\n");
+}
+```
+
+## Ternary Operator
+This is the short form of **if**, **else if** and **else** statement. It contains conditions and respective works
+
+### Syntax
+```c
+(condition) ? (work) : (workLast); 
+```
+```c
+(condition1) ? (work1) : (condition2) ? (work2) : ... ... ... : (conditionN) ? (workN) : (workLast);
+```
+
+### Example
+```c
+int time = 20;
+(time < 18) ? printf("Good day.") : printf("Good evening.");
+```
+
+```c
+int score = 85;
+
+char grade = (score >= 90) ? 'A' :
+             (score >= 80) ? 'B' :
+             (score >= 70) ? 'C' :
+             (score >= 60) ? 'D' : 'F';
+
+printf("Your grade is: %c\n", grade);
+```
+
+## Switch Case Statement
+The switch expression is evaluated **once**. The value of the expression is compared with the values of each case. If there is a match, the associated block of code is executed. The **break** statement **breaks out of the switch block and stops the execution**. The default statement is **optional**, and specifies some code to **run if there is no case match**
+
+### Syntax
+```c
+switch (expression) {
+    case x:
+        // code block
+        break;
+
+    case y:
+        // code block
+        break;
+
+    default:
+        // code block
+}
+```
+
+### Example
+```c
+int day = 4;
+
+switch (day) {
+    case 1:
+        printf("Monday");
+        break;
+    case 2:
+        printf("Tuesday");
+        break;
+    case 3:
+        printf("Wednesday");
+        break;
+    case 4:
+        printf("Thursday");
+        break;
+    case 5:
+        printf("Friday");
+        break;
+    case 6:
+        printf("Saturday");
+        break;
+    case 7:
+        printf("Sunday");
+        break;
+}
+```
+
+
+# Loops
+There are **3 types** of loop: **for** loop, **while** loop, **do while** loop
+
+## For Loop
+When you know exactly how many times you want to loop through a block of code, use the `for loop`
+
+### Syntax
+```c
+for (initialization; condition; increment/decrement) {
+    // Code to repeat
+}
+```
+
+**initialization** is executed (one time) before the execution of the code block. **condition** defines the condition for executing the code block. **increment/decrement** is executed (every time) after the code block has been executed.
+
+### Example
+```c
+for (int i = 1; i <= 5; i++) {
+    printf("Count: %d\n", i);
+}
+```
+
+## While Loop
+The while loop loops through a block of code as long as a specified condition is `true`
+
+### Syntax
+```c
+while (condition) {
+    // Code to repeat
+}
+```
+
+### Example
+```c
+int i = 1;
+while (i <= 5) {
+    printf("Count: %d\n", i);
+    i++;
+}
+```
+
+## Do While Loop
+The **do while** loop is a variant of the while loop. This loop will execute the code block once, before checking if the condition is true, then it will repeat the loop as long as the condition is `true`
+
+### Syntax
+```c
+do {
+    // Code to repeat
+} while (condition);
+```
+
+### Example
+```c
+int i = 1;
+do {
+    printf("Count: %d\n", i);
+    i++;
+} while (i <= 5);
+```
+
+| Loop Type    | Checks Condition | Executes at Least Once | When to Use                       |
+| ------------ | ---------------- | ---------------------- | --------------------------------- |
+| `for`        | Before           | No                     | Known number of repetitions       |
+| `while`      | Before           | No                     | Repeat while a condition is true  |
+| `do...while` | After            | ✅ Yes                  | Run once and then check condition |
+
+## Break & Continue
+The `break` statement can be used to jump out of a `loop`
+
+```c
+int i;
+
+for (i = 0; i < 10; i++) {
+    if (i == 4) {
+        break;
+    }
+    printf("%d\n", i);
+}
+```
+
+The `continue` statement breaks one iteration (in the loop), if a specified condition occurs, and continues with the next iteration in the loop
+
+```c
+int i;
+
+for (i = 0; i < 10; i++) {
+    if (i == 4) {
+        continue;
+    }
+    printf("%d\n", i);
+}
 ```
